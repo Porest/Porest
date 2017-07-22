@@ -3,6 +3,7 @@ package com.planb.porest.dialogs;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import com.planb.porest.R;
@@ -23,5 +24,15 @@ public class MakeTree extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_make_tree);
+
+        cancelBtn = (Button) findViewById(R.id.cancelBtn);
+        confirmBtn = (Button) findViewById(R.id.confirmBtn);
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
     }
 }
