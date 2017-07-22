@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/signup_back"
+    xmlns:sl="http://schemas.android.com/apk/res-auto">
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        sl:scale_base_width="1080"
+        sl:scale_base_height="1800">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:hint="닉네임을 입력하세요"
+            android:background="@drawable/edittext"
+            android:gravity="center"
+            sl:scale_top="950"
+            sl:scale_width="700"
+            sl:scale_height="100"
+            sl:scale_textsize="36"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:hint="아이디를 입력하세요"
+            android:background="@drawable/edittext"
+            android:gravity="center"
+            sl:scale_top="1100"
+            sl:scale_width="700"
+            sl:scale_height="100"
+            sl:scale_textsize="36"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:hint="비밀번호를 입력하세요"
+            android:background="@drawable/edittext"
+            android:inputType="textPassword"
+            android:gravity="center"
+            sl:scale_top="1250"
+            sl:scale_width="700"
+            sl:scale_height="100"
+            sl:scale_textsize="36"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:hint="비밀번호를 다시 입력하세요"
+            android:background="@drawable/edittext"
+            android:inputType="textPassword"
+            android:gravity="center"
+            sl:scale_top="1400"
+            sl:scale_width="700"
+            sl:scale_height="100"
+            sl:scale_textsize="36"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:text="회원가입"
+            android:gravity="center"
+            sl:scale_top="1600"
+            sl:scale_width="700"
+            sl:scale_height="120"
+            sl:scale_textsize="36"/>
+    </com.ssomai.android.scalablelayout.ScalableLayout>
 
 </LinearLayout>
