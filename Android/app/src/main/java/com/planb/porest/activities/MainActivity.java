@@ -49,14 +49,6 @@ public class MainActivity extends BaseActivity {
         DBHelper helper = DBHelper.getInstance(getApplicationContext(), "check.db", null, 1);
         String id = helper.getId();
 
-//        for(int i = 0; i < 5; i++) {
-//            HashMap<String, String> params = new HashMap<>();
-//            params.put("tree_name", "ㅇㄻㄴㅇㄹ");
-//            params.put("id", id);
-//            params.put("maximum_leaves", Integer.toString(i + 23));
-//            aq.ajax(Host.HOST + "/tree", params, String.class, new AjaxCallback<String>());
-//        }
-
         aq.ajax(Host.HOST + "/tree?id=" + id, String.class, new AjaxCallback<String>() {
             @Override
             public void callback(String url, String response, AjaxStatus status) {
