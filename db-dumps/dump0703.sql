@@ -41,13 +41,24 @@ DROP TABLE IF EXISTS `forest`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `forest` (
   `tree_idx` int(11) NOT NULL,
-  `tree_name` varchar(255) NOT NULL,
-  `hash_tags` varchar(512) DEFAULT NULL,
+  `hash_idx` int(11) NOT NULL,
   `creation_time` datetime NOT NULL,
   PRIMARY KEY (`tree_idx`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Table structure for table `tags`
+--
 
+DROP TABLE IF EXISTS `tags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `forest` (
+  `hash_idx` int(11) NOT NULL,
+  `contant` varchar(255) NOT NULL,
+  PRIMARY KEY (`hash_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 --
 -- Table structure for table `tree`
 --
@@ -56,6 +67,7 @@ DROP TABLE IF EXISTS `tree`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tree` (
+  `tree_name` varchar(255) NOT NULL,
   `tree_idx` int(11) NOT NULL AUTO_INCREMENT,
   `owner` varchar(255) NOT NULL,
   `creation_time` datetime NOT NULL,
