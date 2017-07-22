@@ -7,17 +7,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxCallback;
+import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
 import com.planb.porest.activities.base.BaseActivity;
+import com.planb.porest.support.db.DBHelper;
+import com.planb.porest.support.networking.Host;
 import com.planb.porest.support.vo.Tree;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView recyclerView;
+    private ImageView fab;
+    private AQuery aq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +40,28 @@ public class MainActivity extends BaseActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
+        fab = (ImageView) findViewById(R.id.fab);
+        aq = new AQuery(getApplicationContext());
 
-        ArrayList<Tree> test = new ArrayList<>();
-        test.add(new Tree("d", "d", "d", "d"));
-        test.add(new Tree("d", "d", "d", "d"));
-        test.add(new Tree("d", "d", "d", "d"));
+        DBHelper helper = DBHelper.getInstance(getApplicationContext(), "check.db", null, 1);
+        String id = helper.getId();
+        aq.ajax(Host.HOST + "/tree?id=" + id, String.class, new AjaxCallback<String>() {
+            @Override
+            public void callback(String url, String response, AjaxStatus status) {
+                ArrayList<Tree> tree = new ArrayList<>();
 
-        recyclerView.setAdapter(new RecyclerAdapter(test));
+                try {
+                    JSONArray arr = new JSONArray(response);
+                    for(int i = 0; i < arr.length(); i++) {
+                        JSONObject treeObj = arr.getJSONObject(i);
+                    }
+
+                    recyclerView.setAdapter(new RecyclerAdapter(tree));
+                } catch(JSONException e) {
+
+                }
+            }
+        });
     }
 }
 
@@ -70,6 +97,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     // 커스텀 뷰홀더
 // item layout 에 존재하는 위젯들을 바인딩합니다.
     class ViewHolder extends RecyclerView.ViewHolder{
+        private ImageView image;
         private TextView title;
         private TextView leaf;
         private TextView date;
@@ -77,6 +105,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
+            image = (ImageView) itemView.findViewById(R.id.image);
             title = (TextView) itemView.findViewById(R.id.title);
             leaf = (TextView) itemView.findViewById(R.id.leaf);
             date = (TextView) itemView.findViewById(R.id.date);
