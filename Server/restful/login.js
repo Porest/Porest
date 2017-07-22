@@ -6,6 +6,7 @@ router.route('/register').post((req, res) => {
     console.log('/register');
     var paramid= req.body.id;
     var parampassword= req.body.password;
+    var paramnickname= req.body.nickname;
     var paramregistration_id= req.body.registration_id;
     var paramreceived_like= req.body.received_like;
 

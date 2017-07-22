@@ -10,8 +10,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 var login= require('./restful/login.js');
+var tree= require('./restful/tree.js');
 
 app.use('/',login);
+app.use('/',tree);
+
 // const cookieParser = require('cookie-parser');
 // app.use(cookieParser('!..d3##dk!'));
 
