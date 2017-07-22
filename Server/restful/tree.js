@@ -16,7 +16,7 @@ router.route('/tree').post((req, res) => {
     let maximumLeaves = req.body.maximum_leaves;
     let currentDate = date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
 
-    connection.query(`INSERT INTO tree(owner, creation_time, maximum_leaves) VALUES('${id}', '${currentDate}', ${maximumLeaves})`, (err, rows) => {
+    connection.query(`INSERT INTO tree(tree_name,owner, creation_time, maxi0mum_leaves) VALUES('${name}','${id}', '${currentDate}', ${maximumLeaves})`, (err, rows) => {
         if(!err) {
             res.sendStatus(201);
         }

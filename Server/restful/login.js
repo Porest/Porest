@@ -9,7 +9,6 @@ router.route('/register').post((req, res) => {
     var parampassword= req.body.password;
     var paramnickname= req.body.nickname;
     var paramregistration_id= req.body.registration_id;
-    var paramreceived_like= req.body.received_like;
     
     console.log(paramid);
     connection.query('select id from account where id=?',paramid,(err, result)=>{
@@ -26,8 +25,7 @@ router.route('/register').post((req, res) => {
                 id: paramid,
                 password: parampassword,
                 nickname: paramnickname,
-                registration_id: paramregistration_id,
-                received_like: paramreceived_like
+                registration_id: paramregistration_id
             };
             connection.query('insert into account set ?',userInput,(err,result)=>{
                 if(err){
