@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/signup_back"
     xmlns:sl="http://schemas.android.com/apk/res-auto">
+    
     <Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         sl:scale_base_width="1080"
-        sl:scale_base_height="1800">
+        sl:scale_base_height="1600">
 
         <EditText
             android:id="@+id/nickname"
@@ -42,7 +43,7 @@
             android:background="@drawable/edittext"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="950"
+            sl:scale_top="850"
             sl:scale_width="700"
             sl:scale_height="110"
             sl:scale_textsize="36"/>
@@ -55,7 +56,7 @@
             android:background="@drawable/edittext"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="1100"
+            sl:scale_top="1000"
             sl:scale_width="700"
             sl:scale_height="110"
             sl:scale_textsize="36"/>
@@ -69,7 +70,7 @@
             android:inputType="textPassword"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="1250"
+            sl:scale_top="1150"
             sl:scale_width="700"
             sl:scale_height="110"
             sl:scale_textsize="36"/>
@@ -83,7 +84,7 @@
             android:inputType="textPassword"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="1400"
+            sl:scale_top="1300"
             sl:scale_width="700"
             sl:scale_height="110"
             sl:scale_textsize="36"/>
@@ -94,10 +95,9 @@
             android:layout_gravity="center_horizontal"
             android:text="회원가입"
             android:gravity="center"
-            sl:scale_top="1620"
+            sl:scale_top="1450"
             sl:scale_width="700"
             sl:scale_height="120"
             sl:scale_textsize="36"/>
     </com.ssomai.android.scalablelayout.ScalableLayout>
-
 </LinearLayout>

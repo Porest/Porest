@@ -14,6 +14,7 @@ import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
 import com.planb.porest.activities.base.BaseActivity;
 import com.planb.porest.support.networking.Host;
+import com.planb.porest.support.view.SnackbarManager;
 
 import org.w3c.dom.Text;
 
@@ -45,7 +46,7 @@ public class Login extends BaseActivity {
             @Override
             public void onClick(final View v) {
                 if(id.getText().toString().isEmpty() || pw.getText().toString().isEmpty()) {
-                    makeSnackbar(v).show();
+                    SnackbarManager.make(v, "아이디 또는 비밀번호를 확인하세요.").show();
                 } else {
                     HashMap<String, String> params = new HashMap<String, String>();
 
@@ -56,7 +57,7 @@ public class Login extends BaseActivity {
                             if(status.getCode() == 200) {
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             } else {
-                                makeSnackbar(v).show();
+                                SnackbarManager.make(v, "아이디 또는 비밀번호를 확인하세요.").show();
                             }
                         }
                     });
@@ -68,15 +69,6 @@ public class Login extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Signup.class));
-            }
-        });
-    }
-
-    private Snackbar makeSnackbar(View v) {
-        return Snackbar.make(v, "아이디 또는 비밀번호를 확인하세요.", Snackbar.LENGTH_SHORT).setAction("확인", new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                v.setVisibility(View.GONE);
             }
         });
     }
