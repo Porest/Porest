@@ -49,11 +49,12 @@ public class Login extends BaseActivity {
                     SnackbarManager.make(v, "아이디 또는 비밀번호를 확인하세요.").show();
                 } else {
                     HashMap<String, String> params = new HashMap<String, String>();
+                    params.put("id", id.getText().toString());
+                    params.put("password", pw.getText().toString());
 
                     aq.ajax(Host.HOST + "/login", params, String.class, new AjaxCallback<String>() {
                         @Override
                         public void callback(String url, String object, AjaxStatus status) {
-                            System.out.println(status.getCode());
                             if(status.getCode() == 200) {
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             } else {
