@@ -11,6 +11,7 @@ const date = new Date();
 
 router.route('/tree').post((req, res) => {
     // 나무 만들기
+    let name= req.body.tree_name;
     let id = req.body.id;
     let maximumLeaves = req.body.maximum_leaves;
     let currentDate = date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
@@ -19,6 +20,7 @@ router.route('/tree').post((req, res) => {
         if(!err) {
             res.sendStatus(201);
         }
+    res.status(200);
     });
 }).get((req, res) => {
     // 나무 리스트
