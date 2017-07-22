@@ -9,4 +9,11 @@ public class Tree {
     public String leaf;
     public String date;
     public String shared;
+
+    public Tree(String title, String leaf, String date, String shared) {
+        this.title = title;
+        this.leaf = leaf;
+        this.date = date;
+        this.shared = shared;
+    }
 }

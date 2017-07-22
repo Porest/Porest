@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.planb.porest.R;
 import com.planb.porest.activities.base.BaseActivity;
+import com.planb.porest.support.vo.Tree;
+
+import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
     private RecyclerView.LayoutManager layoutManager;
@@ -22,15 +25,24 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.main);
 
         layoutManager = new LinearLayoutManager(this);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(layoutManager);
+
+        ArrayList<Tree> test = new ArrayList<>();
+        test.add(new Tree("d", "d", "d", "d"));
+        test.add(new Tree("d", "d", "d", "d"));
+        test.add(new Tree("d", "d", "d", "d"));
+
+        recyclerView.setAdapter(new RecyclerAdapter(test));
     }
 }
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    String itm;
+class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+    ArrayList<Tree> tree;
 
-    public RecyclerAdapter(String itm){
-        this.itm = itm;
+    public RecyclerAdapter(ArrayList<Tree> tree){
+        this.tree = tree;
     }
 
     // 새로운 뷰 홀더 생성
@@ -43,13 +55,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     // View 의 내용을 해당 포지션의 데이터로 바꿉니다.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mNameTv.setText(mItems.get(position).getName());
+        holder.title.setText(tree.get(position).title);
+        holder.leaf.setText(tree.get(position).leaf);
+        holder.date.setText(tree.get(position).date);
+        holder.shared.setText(tree.get(position).shared);
     }
 
     // 데이터 셋의 크기를 리턴해줍니다.
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return tree.size();
     }
 
     // 커스텀 뷰홀더
