@@ -3,7 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 const connection = require('../mysql.js');
-var sync= require('sync');
 const util = require('util');
 const date = new Date();
 const currentDate = date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
@@ -89,36 +88,30 @@ router.route('/forest/tag/select').post((req,res)=>{
             res.sendStatus(204);
         }
         var tagArray=result;
-        
-        function forfunction(){
+
             var treeArray=[];
-                for(var i=0;i<tagArray.length;i++){
-                    connection.query('select tree_idx from forest where hash_idx=?',tagArray[i].hash_idx,(err,result)=>{
-                        if(err){
-                            throw err;
-                            console.log('select tag tree err');
-                            res.sendStatus(204);
-                        } 
+            for(var i=0;i<tagArray.length;i++){
+                connection.query('select tree_idx from forest where hash_idx=?',tagArray[i].hash_idx,(err,result)=>{
+                    if(err){
+                        throw err;
+                        console.log('select tag tree err');
+                        res.sendStatus(204);
+                    } 
                         // console.log(result);
-                        
-                        
-                        treeArray.push(result[0].tree_idx);
-                        console.log(result[0].tree_idx);
-                        // connection.query('select ')
-                    })
-                }
-            return treeArray;
-        }
-        sync(function(){
-            
-            var result= forfunction.sync();
-            console.log(result); 
-            console.log('fsdf');  
-        })
+                            
+                            
+                    treeArray.push(result[0].tree_idx);
+                    console.log(result[0].tree_idx);
+                    // connection.query('select ')
+                    if(i === tagArray.length-1){
+                        res.status(200).json(treeArray);
+                    }
+                });
+            }
         
-            
-        
+   
     })
+
 });
 
 module.exports = router;
