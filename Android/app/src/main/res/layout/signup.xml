@@ -14,28 +14,33 @@
         sl:scale_base_height="1800">
 
         <EditText
+            android:id="@+id/nickname"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:hint="닉네임을 입력하세요"
             android:background="@drawable/edittext"
             android:gravity="center"
-            sl:scale_top="950"
+            android:maxLines="1"
+            sl:scale_top="1000"
             sl:scale_width="700"
             sl:scale_height="100"
             sl:scale_textsize="36"/>
         <EditText
+            android:id="@+id/id"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:hint="아이디를 입력하세요"
             android:background="@drawable/edittext"
             android:gravity="center"
-            sl:scale_top="1100"
+            android:maxLines="1"
+            sl:scale_top="1150"
             sl:scale_width="700"
             sl:scale_height="100"
             sl:scale_textsize="36"/>
         <EditText
+            android:id="@+id/pw"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
@@ -43,11 +48,13 @@
             android:background="@drawable/edittext"
             android:inputType="textPassword"
             android:gravity="center"
-            sl:scale_top="1250"
+            android:maxLines="1"
+            sl:scale_top="1300"
             sl:scale_width="700"
             sl:scale_height="100"
             sl:scale_textsize="36"/>
         <EditText
+            android:id="@+id/pwConfirm"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
@@ -55,17 +62,19 @@
             android:background="@drawable/edittext"
             android:inputType="textPassword"
             android:gravity="center"
-            sl:scale_top="1400"
+            android:maxLines="1"
+            sl:scale_top="1450"
             sl:scale_width="700"
             sl:scale_height="100"
             sl:scale_textsize="36"/>
         <Button
+            android:id="@+id/signupBtn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:text="회원가입"
             android:gravity="center"
-            sl:scale_top="1600"
+            sl:scale_top="1650"
             sl:scale_width="700"
             sl:scale_height="120"
             sl:scale_textsize="36"/>
