@@ -95,10 +95,6 @@ public class TreeDetail extends BaseActivity {
     }
 
     private void setDatas(int treeIndex) {
-        ArrayList<Leaf> leafList = new ArrayList<>();
-        Leaf leaf = new Leaf(1, "hello");
-
-        leafList.add(leaf);
         aq.ajax(Host.HOST + "/post?tree_idx=" + treeIndex, String.class, new AjaxCallback<String>() {
             @Override
             public void callback(String url, String response, AjaxStatus status) {

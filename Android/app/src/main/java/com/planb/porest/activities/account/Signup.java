@@ -70,6 +70,7 @@ public class Signup extends BaseActivity {
                         aq.ajax(Host.HOST + "/register", params, String.class, new AjaxCallback<String>() {
                             @Override
                             public void callback(String url, String object, AjaxStatus status) {
+                                System.out.println(status.getCode());
                                 if(status.getCode() == 200) {
                                     SnackbarManager.make(v, "회원가입 성공!").show();
                                     startActivity(new Intent(getApplicationContext(), Login.class));
