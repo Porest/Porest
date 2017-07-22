@@ -13,6 +13,7 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
 import com.planb.porest.activities.base.BaseActivity;
+import com.planb.porest.support.db.DBHelper;
 import com.planb.porest.support.networking.Host;
 import com.planb.porest.support.view.SnackbarManager;
 
@@ -56,6 +57,7 @@ public class Login extends BaseActivity {
                         @Override
                         public void callback(String url, String object, AjaxStatus status) {
                             if(status.getCode() == 200) {
+                                DBHelper.getInstance(getApplicationContext(), "check.db", null, 1).login(id.getText().toString());
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             } else {
                                 SnackbarManager.make(v, "아이디 또는 비밀번호를 확인하세요.").show();
