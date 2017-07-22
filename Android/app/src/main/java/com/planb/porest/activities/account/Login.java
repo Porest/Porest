@@ -1,8 +1,7 @@
-package com.planb.porest.activities;
+package com.planb.porest.activities.account;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,12 +11,11 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
+import com.planb.porest.activities.MainActivity;
 import com.planb.porest.activities.base.BaseActivity;
 import com.planb.porest.support.db.DBHelper;
 import com.planb.porest.support.networking.Host;
 import com.planb.porest.support.view.SnackbarManager;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 

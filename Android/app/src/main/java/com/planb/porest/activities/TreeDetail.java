@@ -1,8 +1,8 @@
 package com.planb.porest.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +17,8 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
 import com.planb.porest.activities.base.BaseActivity;
+import com.planb.porest.dialogs.MakeLeaf;
+import com.planb.porest.dialogs.MakeTree;
 import com.planb.porest.support.networking.Host;
 import com.planb.porest.support.vo.Leaf;
 import com.planb.porest.support.vo.Tree;
@@ -38,6 +40,7 @@ public class TreeDetail extends BaseActivity {
     private TextView leaf;
     private TextView like;
     private RecyclerView recyclerView;
+    private ImageView fab;
     private AQuery aq;
 
     @Override
@@ -50,13 +53,33 @@ public class TreeDetail extends BaseActivity {
         like = (TextView) findViewById(R.id.like);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        fab = (ImageView) findViewById(R.id.fab);
         aq = new AQuery(getApplicationContext());
+        final Tree tree = Tree.focusTree;
 
-        Tree tree = Tree.focusTree;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final MakeLeaf dialog = new MakeLeaf(TreeDetail.this);
+                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        setDatas(tree.index);
+                    }
+                });
+                dialog.show();
+            }
+        });
+
+
         setDatas(tree.index);
     }
 
     private void setDatas(int treeIndex) {
+        ArrayList<Leaf> leafList = new ArrayList<>();
+        Leaf leaf = new Leaf(1, "hello");
+
+        leafList.add(leaf);
         aq.ajax(Host.HOST + "/post?tree_idx=" + treeIndex, String.class, new AjaxCallback<String>() {
             @Override
             public void callback(String url, String response, AjaxStatus status) {

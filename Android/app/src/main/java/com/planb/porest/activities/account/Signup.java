@@ -1,4 +1,4 @@
-package com.planb.porest.activities;
+package com.planb.porest.activities.account;
 
 import android.content.Intent;
 import android.os.Bundle;
