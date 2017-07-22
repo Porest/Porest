@@ -13,9 +13,9 @@ var login= require('./restful/login.js');
 var tree= require('./restful/tree.js');
 var forest= require('./restful/forest.js');
 
-app.use('/',login);
-app.use('/',tree);
-app.use('/',forest);
+app.use('',login);
+app.use('',tree);
+app.use('',forest);
 // const cookieParser = require('cookie-parser');
 // app.use(cookieParser('!..d3##dk!'));
 
