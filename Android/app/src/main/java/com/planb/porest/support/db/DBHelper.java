@@ -1,6 +1,7 @@
 package com.planb.porest.support.db;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -45,5 +46,23 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onOpen(SQLiteDatabase db) {
         super.onOpen(db);
+    }
+
+    public String getId() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM `checker`", null);
+        cursor.moveToFirst();
+
+        return cursor.getString(0);
+    }
+
+    public void login(String id) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("UPDATE `checker` SET id=?", new Object[]{id});
+    }
+
+    public void logout() {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("UPDATE `checker` SET id=null");
     }
 }
