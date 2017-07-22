@@ -24,6 +24,7 @@ import com.planb.porest.support.vo.Tree;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -96,6 +97,8 @@ class LeafAdapter extends RecyclerView.Adapter<LeafAdapter.ViewHolder> {
     // View 의 내용을 해당 포지션의 데이터로 바꿉니다.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.guideView.setText((position + 1) + "번째 잎사귀");
+        holder.contentView.setText(leaf.get(position).content);
     }
 
     // 데이터 셋의 크기를 리턴해줍니다.
@@ -107,8 +110,14 @@ class LeafAdapter extends RecyclerView.Adapter<LeafAdapter.ViewHolder> {
     // 커스텀 뷰홀더
     // item layout 에 존재하는 위젯들을 바인딩합니다.
     class ViewHolder extends RecyclerView.ViewHolder{
+        private TextView guideView;
+        private TextView contentView;
+
         public ViewHolder(final View itemView) {
             super(itemView);
+
+            guideView = (TextView) itemView.findViewById(R.id.guideView);
+            contentView = (TextView) itemView.findViewById(R.id.contentView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
