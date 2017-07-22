@@ -96,6 +96,7 @@
             sl:scale_height="110"
             sl:scale_textsize="36"/>
         <Button
+            android:background="@drawable/button"
             android:id="@+id/signupBtn"
             android:layout_width="0dp"
             android:layout_height="0dp"

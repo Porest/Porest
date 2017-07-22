@@ -1,5 +1,6 @@
 package com.planb.porest.activities;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
 import com.planb.porest.activities.base.BaseActivity;
+import com.planb.porest.dialogs.MakeTree;
 import com.planb.porest.support.db.DBHelper;
 import com.planb.porest.support.networking.Host;
 import com.planb.porest.support.vo.Tree;
@@ -90,6 +92,14 @@ public class MainActivity extends BaseActivity {
                 }
             }
         }.method(AQuery.METHOD_GET));
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final MakeTree dialog = new MakeTree(MainActivity.this);
+                dialog.show();
+            }
+        });
     }
 }
 
