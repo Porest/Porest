@@ -38,6 +38,12 @@ public class MainActivity extends BaseActivity {
     private AQuery aq;
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        setDatas();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);

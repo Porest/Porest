@@ -3,12 +3,15 @@ package com.planb.porest.activities;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,9 +19,9 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
+import com.planb.porest.activities.account.Login;
 import com.planb.porest.activities.base.BaseActivity;
 import com.planb.porest.dialogs.MakeLeaf;
-import com.planb.porest.dialogs.MakeTree;
 import com.planb.porest.support.networking.Host;
 import com.planb.porest.support.vo.Leaf;
 import com.planb.porest.support.vo.Tree;
@@ -26,16 +29,15 @@ import com.planb.porest.support.vo.Tree;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Created by dsm2016 on 2017-07-23.
  */
 
 public class TreeDetail extends BaseActivity {
+    private ImageButton backBtn;
     private TextView titleView;
     private TextView leaf;
     private TextView like;
@@ -48,14 +50,31 @@ public class TreeDetail extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tree_detail);
 
+        backBtn = (ImageButton) findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
+
+        final Tree tree = Tree.focusTree;
+
         titleView = (TextView) findViewById(R.id.titleView);
+        titleView.setText(tree.name);
+
         leaf = (TextView) findViewById(R.id.leaf);
+        leaf.setText(tree.currentLeaves + " / " + tree.maxLeaves);
+        leaf.setTextColor(Color.rgb(63, 155, 10));
+
         like = (TextView) findViewById(R.id.like);
+        like.setText("좋아요" + tree.likeCount);
+        leaf.setTextColor(Color.rgb(55, 137, 8));
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fab = (ImageView) findViewById(R.id.fab);
         aq = new AQuery(getApplicationContext());
-        final Tree tree = Tree.focusTree;
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

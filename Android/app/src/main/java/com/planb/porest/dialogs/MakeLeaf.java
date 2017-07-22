@@ -14,6 +14,7 @@ import com.planb.porest.R;
 import com.planb.porest.support.db.DBHelper;
 import com.planb.porest.support.networking.Host;
 import com.planb.porest.support.view.SnackbarManager;
+import com.planb.porest.support.vo.Tree;
 
 import java.util.HashMap;
 
@@ -56,9 +57,12 @@ public class MakeLeaf extends Dialog {
                 } else {
                     HashMap<String, String> params = new HashMap<>();
                     params.put("contant", leafContent.getText().toString());
+                    params.put("tree_idx", Integer.toString(Tree.focusTree.index));
+
                     aq.ajax(Host.HOST + "/post", params, String.class, new AjaxCallback<String>() {
                         @Override
                         public void callback(String url, String object, AjaxStatus status) {
+                            System.out.println(status.getCode());
                             if(status.getCode() == 200) {
                                 dismiss();
                             }
