@@ -1,15 +1,14 @@
 package com.planb.porest.activities;
 
-import android.app.Activity;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.planb.porest.R;
+import com.planb.porest.activities.base.BaseActivity;
 import com.planb.porest.support.db.DBHelper;
 
-public class Splash extends Activity {
+public class Splash extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +23,15 @@ public class Splash extends Activity {
     }
 
     private void judge() {
-        DBHelper helper = DBHelper.getInstance(getApplicationContext(), "check.db", null, 1);
+        if(isLogined()) {
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+            startActivity(new Intent(this, Login.class));
+        }
     }
 
-    private boolean isLogined(DBHelper helper) {
+    private boolean isLogined() {
+        DBHelper helper = DBHelper.getInstance(getApplicationContext(), "check.db", null, 1);
         if(helper.getId() == null) {
             return false;
         } else {
