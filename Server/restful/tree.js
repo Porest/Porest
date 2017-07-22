@@ -18,7 +18,8 @@ router.route('/tree').post((req, res) => {
 
     connection.query(`INSERT INTO tree(tree_name,owner, creation_time, maximum_leaves) VALUES('${name}','${id}', '${currentDate}', ${maximumLeaves})`, (err, rows) => {
         if(!err) {
-            res.sendStatus(201);
+            throw err;
+            res.sendStatus(204);
         }
     res.sendStatus(200);
     });
@@ -35,6 +36,16 @@ router.route('/tree').post((req, res) => {
         console.log(result);
         res.json(result);
     })
-});
+}).delete((req,res)=>{
+    var paramTreeIndex= req.body.tree_idx;
+    connection.query('delete from tree where tree_idx=?',paramTreeIndex,(err,result)=>{
+        if(err){
+            throw err;
+            res.sendStatus(204);
+        }
+        console.log(result);
+        res.sendStatus(200);
+    });
+})
 
 module.exports = router;
