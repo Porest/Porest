@@ -1,14 +1,18 @@
-package com.planb.porest.support.activities;
+package com.planb.porest.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 import com.planb.porest.R;
 
-public class MainActivity extends Activity {
+/**
+ * Created by dsm2016 on 2017-07-22.
+ */
+
+public class Signup extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.signup);
     }
 }

@@ -1,14 +1,14 @@
-package com.planb.porest.support.activities;
+package com.planb.porest.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 import com.planb.porest.R;
 
-public class Splash extends Activity {
+public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
+        setContentView(R.layout.main);
     }
 }
