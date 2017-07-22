@@ -11,15 +11,15 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#cccccc">
+        android:background="#333333">
         <RelativeLayout
             android:layout_marginRight="15dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageButton
                 android:id="@+id/backBtn"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:scaleType="centerInside"
                 android:background="#00000000"
                 android:src="@drawable/back"
@@ -30,7 +30,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text="회원가입"
-                android:textColor="#000000"
+                android:textColor="#ffffff"
                 android:textSize="18sp"/>
         </RelativeLayout>
     </Toolbar>
