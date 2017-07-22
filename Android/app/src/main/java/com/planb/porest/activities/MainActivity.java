@@ -1,5 +1,6 @@
 package com.planb.porest.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -110,7 +111,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Random random = new Random();
-        switch(random.nextInt() % 3) {
+        switch(Math.abs(random.nextInt() % 5)) {
             case 0:
                 holder.image.setImageResource(R.drawable.tree);
                 break;
@@ -120,11 +121,28 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
             case 2:
                 holder.image.setImageResource(R.drawable.tree3);
                 break;
+            case 3:
+                holder.image.setImageResource(R.drawable.tree4);
+                break;
+            case 4:
+                holder.image.setImageResource(R.drawable.tree5);
+                break;
         }
         holder.name.setText(tree.get(position).name);
-        holder.leaf.setText(tree.get(position).leaf);
-        holder.date.setText(tree.get(position).date);
-        holder.shared.setText(tree.get(position).shared);
+
+        holder.leaf.setText("목표치 " + tree.get(position).maxLeaves + "개 중 " + tree.get(position).currentLeaves + "개 잎사귀");
+        holder.leaf.setTextColor(Color.rgb(63, 155, 10));
+
+        holder.date.setText(tree.get(position).date.substring(0, tree.get(position).date.length() - 5).replace("T", " ") + "에 생성된 나무");
+        holder.date.setTextColor(Color.rgb(55, 137, 8));
+
+        if(tree.get(position).isShared) {
+            holder.shared.setText("숲에 공유된 나무");
+            holder.shared.setTextColor(Color.rgb(15, 40, 250));
+        } else {
+            holder.shared.setText("숲에 공유되지 않은 나무");
+            holder.shared.setTextColor(Color.rgb(237, 143, 21));
+        }
     }
 
     // 데이터 셋의 크기를 리턴해줍니다.

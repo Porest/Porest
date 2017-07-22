@@ -17,31 +17,27 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="test"
-            android:textSize="22sp"
+            android:textSize="20sp"
             />
         <TextView
             android:id="@+id/leaf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/name"
-            android:text="test"
-            android:textSize="16sp"
+            android:textSize="14sp"
             />
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/leaf"
-            android:text="test"
-            android:textSize="16sp"/>
+            android:textSize="14sp"/>
         <TextView
             android:id="@+id/shared"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text="test"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:paddingBottom="10dp"/>
     </RelativeLayout>
 </LinearLayout>
