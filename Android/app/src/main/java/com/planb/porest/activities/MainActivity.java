@@ -1,11 +1,14 @@
 package com.planb.porest.activities;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -35,14 +38,18 @@ public class MainActivity extends BaseActivity {
     private AQuery aq;
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        setDatas();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        layoutManager = new LinearLayoutManager(this);
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fab = (ImageView) findViewById(R.id.fab);
         aq = new AQuery(getApplicationContext());
 
@@ -96,7 +103,7 @@ public class MainActivity extends BaseActivity {
                         treeList.add(tree);
                     }
 
-                    recyclerView.setAdapter(new RecyclerAdapter(treeList));
+                    recyclerView.setAdapter(new Adapter(treeList));
                 } catch(JSONException e) {
 
                 }
@@ -105,16 +112,16 @@ public class MainActivity extends BaseActivity {
     }
 }
 
-class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     ArrayList<Tree> tree;
 
-    public RecyclerAdapter(ArrayList<Tree> tree){
+    public Adapter(ArrayList<Tree> tree){
         this.tree = tree;
     }
 
     // 새로운 뷰 홀더 생성
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tree, parent, false);
         return new ViewHolder(view);
     }
@@ -123,7 +130,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Random random = new Random();
-        switch(Math.abs(random.nextInt() % 5)) {
+        switch(tree.get(position).index % 5) {
             case 0:
                 holder.image.setImageResource(R.drawable.tree);
                 break;
@@ -164,7 +171,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     }
 
     // 커스텀 뷰홀더
-// item layout 에 존재하는 위젯들을 바인딩합니다.
+    // item layout 에 존재하는 위젯들을 바인딩합니다.
     class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView image;
         private TextView name;
@@ -172,13 +179,23 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
         private TextView date;
         private TextView shared;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.image);
             name = (TextView) itemView.findViewById(R.id.name);
             leaf = (TextView) itemView.findViewById(R.id.leaf);
             date = (TextView) itemView.findViewById(R.id.date);
             shared = (TextView) itemView.findViewById(R.id.shared);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Tree.focusTree = tree.get(getLayoutPosition());
+                    Context context = itemView.getContext();
+                    Intent intent = new Intent(context, TreeDetail.class);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

@@ -1,10 +1,12 @@
-package com.planb.porest.activities;
+package com.planb.porest.activities.splash;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import com.planb.porest.R;
+import com.planb.porest.activities.MainActivity;
+import com.planb.porest.activities.account.Login;
 import com.planb.porest.activities.base.BaseActivity;
 import com.planb.porest.support.db.DBHelper;
 
