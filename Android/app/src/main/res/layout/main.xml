@@ -6,41 +6,44 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.MainActivity">
-
-    <Toolbar
-        android:id="@+id/toolbar"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#333333">
-        <RelativeLayout
-            android:layout_marginRight="15dp"
+        android:layout_height="wrap_content">
+        <Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageButton
-                android:id="@+id/backBtn"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:scaleType="centerInside"
-                android:background="#00000000"
-                android:src="@drawable/back"
-                android:layout_centerVertical="true"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="회원가입"
-                android:textColor="#ffffff"
-                android:textSize="18sp"/>
-        </RelativeLayout>
-    </Toolbar>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="LinearLayoutManager">
-
-    </android.support.v7.widget.RecyclerView>
+            android:layout_height="?attr/actionBarSize"
+            android:background="#333333">
+            <RelativeLayout
+                android:layout_marginRight="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:scaleType="centerInside"
+                    android:background="#00000000"
+                    android:src="@drawable/back"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="회원가입"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"/>
+            </RelativeLayout>
+        </Toolbar>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/frameLayout"
