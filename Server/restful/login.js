@@ -33,6 +33,7 @@ router.route('/register').post((req, res) => {
                     res.sendStatus(204);
                 }
                 console.log(paramid+'추가 성공');
+                res.status(200);
             });
         }
     });
