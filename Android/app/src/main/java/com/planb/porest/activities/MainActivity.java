@@ -42,10 +42,8 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        layoutManager = new LinearLayoutManager(this);
-
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fab = (ImageView) findViewById(R.id.fab);
         aq = new AQuery(getApplicationContext());
 
@@ -99,7 +97,7 @@ public class MainActivity extends BaseActivity {
                         treeList.add(tree);
                     }
 
-                    recyclerView.setAdapter(new RecyclerAdapter(treeList));
+                    recyclerView.setAdapter(new Adapter(treeList));
                 } catch(JSONException e) {
 
                 }
@@ -108,16 +106,16 @@ public class MainActivity extends BaseActivity {
     }
 }
 
-class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     ArrayList<Tree> tree;
 
-    public RecyclerAdapter(ArrayList<Tree> tree){
+    public Adapter(ArrayList<Tree> tree){
         this.tree = tree;
     }
 
     // 새로운 뷰 홀더 생성
     @Override
-    public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tree, parent, false);
         return new ViewHolder(view);
     }
