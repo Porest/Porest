@@ -5,15 +5,21 @@ package com.planb.porest.support.vo;
  */
 
 public class Tree {
-    public String title;
-    public String leaf;
+    public int index;
+    public String name;
+    public int currentLeaves;
+    public int maxLeaves;
     public String date;
-    public String shared;
+    public boolean isShared;
+    public int likeCount;
 
-    public Tree(String title, String leaf, String date, String shared) {
-        this.title = title;
-        this.leaf = leaf;
+    public Tree(int index, String name, int currentLeaves, int maxLeaves, String date, boolean isShared, int likeCount) {
+        this.index = index;
+        this.name = name;
+        this.currentLeaves = currentLeaves;;
+        this.maxLeaves = maxLeaves;
         this.date = date;
-        this.shared = shared;
+        this.isShared = isShared;
+        this.likeCount = likeCount;
     }
 }
