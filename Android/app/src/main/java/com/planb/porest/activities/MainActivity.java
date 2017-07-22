@@ -186,7 +186,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Tree.focusPosition = getLayoutPosition();
+                    Tree.focusTree = tree.get(getLayoutPosition());
                     Context context = itemView.getContext();
                     Intent intent = new Intent(context, TreeDetail.class);
                     context.startActivity(intent);
