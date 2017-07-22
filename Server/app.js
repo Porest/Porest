@@ -6,6 +6,12 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 
+
+
+
+var login= require('./restful/login.js');
+
+app.use('/',login);
 // const cookieParser = require('cookie-parser');
 // app.use(cookieParser('!..d3##dk!'));
 
