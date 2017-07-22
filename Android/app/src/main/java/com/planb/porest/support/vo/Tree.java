@@ -5,6 +5,8 @@ package com.planb.porest.support.vo;
  */
 
 public class Tree {
+    public static int focusPosition = 0;
+
     public int index;
     public String name;
     public int currentLeaves;
