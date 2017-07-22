@@ -24,7 +24,7 @@
             android:maxLines="1"
             sl:scale_top="1150"
             sl:scale_width="700"
-            sl:scale_height="100"
+            sl:scale_height="110"
             sl:scale_textsize="36"/>
         <EditText
             android:id="@+id/pw"
@@ -38,7 +38,7 @@
             android:maxLines="1"
             sl:scale_top="1300"
             sl:scale_width="700"
-            sl:scale_height="100"
+            sl:scale_height="110"
             sl:scale_textsize="36"/>
         <Button
             android:id="@+id/loginBtn"

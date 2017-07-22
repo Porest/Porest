@@ -63,6 +63,13 @@ public class Login extends BaseActivity {
                 }
             }
         });
+
+        jumpToSignupView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Signup.class));
+            }
+        });
     }
 
     private Snackbar makeSnackbar(View v) {

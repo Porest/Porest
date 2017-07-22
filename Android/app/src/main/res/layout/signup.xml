@@ -6,6 +6,26 @@
     android:layout_height="match_parent"
     android:background="@drawable/signup_back"
     xmlns:sl="http://schemas.android.com/apk/res-auto">
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary">
+        <RelativeLayout
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="회원가입"
+                android:textColor="#ffffff"
+                android:textSize="18sp"/>
+        </RelativeLayout>
+    </Toolbar>
+
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,9 +42,9 @@
             android:background="@drawable/edittext"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="1000"
+            sl:scale_top="950"
             sl:scale_width="700"
-            sl:scale_height="100"
+            sl:scale_height="110"
             sl:scale_textsize="36"/>
         <EditText
             android:id="@+id/id"
@@ -35,9 +55,9 @@
             android:background="@drawable/edittext"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="1150"
+            sl:scale_top="1100"
             sl:scale_width="700"
-            sl:scale_height="100"
+            sl:scale_height="110"
             sl:scale_textsize="36"/>
         <EditText
             android:id="@+id/pw"
@@ -49,9 +69,9 @@
             android:inputType="textPassword"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="1300"
+            sl:scale_top="1250"
             sl:scale_width="700"
-            sl:scale_height="100"
+            sl:scale_height="110"
             sl:scale_textsize="36"/>
         <EditText
             android:id="@+id/pwConfirm"
@@ -63,9 +83,9 @@
             android:inputType="textPassword"
             android:gravity="center"
             android:maxLines="1"
-            sl:scale_top="1450"
+            sl:scale_top="1400"
             sl:scale_width="700"
-            sl:scale_height="100"
+            sl:scale_height="110"
             sl:scale_textsize="36"/>
         <Button
             android:id="@+id/signupBtn"
@@ -74,7 +94,7 @@
             android:layout_gravity="center_horizontal"
             android:text="회원가입"
             android:gravity="center"
-            sl:scale_top="1650"
+            sl:scale_top="1620"
             sl:scale_width="700"
             sl:scale_height="120"
             sl:scale_textsize="36"/>
