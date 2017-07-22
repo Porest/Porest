@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `account` (
-  `id` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `nickname` varchar(256) NOT NULL,
-  `registration_id` varchar(256) NOT NULL,
+  `id` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `nickname` varchar(255) NOT NULL,
+  `registration_id` varchar(255) NOT NULL,
   `received_like` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -56,7 +56,7 @@ DROP TABLE IF EXISTS `tree`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tree` (
   `tree_idx` int(11) NOT NULL AUTO_INCREMENT,
-  `owner` varchar(256) NOT NULL,
+  `owner` varchar(255) NOT NULL,
   `creation_time` datetime NOT NULL,
   `current_leaves` int(11) NOT NULL DEFAULT '0',
   `maximum_leaves` int(11) NOT NULL DEFAULT '365',

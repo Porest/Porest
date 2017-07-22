@@ -5,6 +5,7 @@ const router = express.Router();
 
 const connection = require('../mysql.js');
 const util = require('util');
+var url = require('url');
 
 const date = new Date();
 
@@ -21,14 +22,16 @@ router.route('/tree').post((req, res) => {
     });
 }).get((req, res) => {
     // 나무 리스트
-    var paramid = req.param.id;
-
-    connection.query('select id from tree where id=?',paramid,(err, result)=>{
+    
+    var paramid = url.parse(req.url,true).query.id;
+    console.log(paramid);
+    connection.query('select * from tree where owner=?',paramid,(err, result)=>{
         if(err){
             throw err;
             res.sendStatus(204);
         }
         console.log(result);
+        res.json(result);
     })
 });
 
