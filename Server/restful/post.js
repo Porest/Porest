@@ -7,7 +7,7 @@ var url = require('url');
 
 router.route('/post').post((req, res) => {
     var contant= req.body.contant;
-    var paramTreeIndex = url.parse(req.url,true).query.tree_idx;
+    var paramTreeIndex = req.body.tree_idx;
 
     var postInput=[contant,paramTreeIndex];
     connection.query(`INSERT INTO post(contant,tree_idx) VALUES(?,?)`,postInput, (err, rows) => {
