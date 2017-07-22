@@ -42,9 +42,6 @@ router.route('/register').post((req, res) => {
 
 });
 
-router.route('/login').get((req,res)=>{
-        
-});
 router.route('/login').post((req,res)=>{
     console.log('/login');
     var paramid= req.body.id;
