@@ -1,13 +1,13 @@
 package com.planb.porest.activities.base;
 
-import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 /**
  * Created by dsm2016 on 2017-07-22.
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
     private final long FINISH_INTERVAL_TIME = 2000;
     private long lastBackPressedTime;
 
