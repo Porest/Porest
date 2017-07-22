@@ -22,6 +22,8 @@ app.use('/',login);
 //     saveUninitialized: true
 // }));
 
+app.use('/', require('./restful/tree.js'));
+
 app.listen(80, () => {
     console.log('Server is listening');
 });
