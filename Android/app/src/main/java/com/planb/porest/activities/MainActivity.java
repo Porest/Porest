@@ -46,6 +46,24 @@ public class MainActivity extends BaseActivity {
         fab = (ImageView) findViewById(R.id.fab);
         aq = new AQuery(getApplicationContext());
 
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final MakeTree dialog = new MakeTree(MainActivity.this);
+                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        setDatas();
+                    }
+                });
+                dialog.show();
+            }
+        });
+
+        setDatas();
+    }
+
+    private void setDatas() {
         DBHelper helper = DBHelper.getInstance(getApplicationContext(), "check.db", null, 1);
         String id = helper.getId();
 
@@ -84,14 +102,6 @@ public class MainActivity extends BaseActivity {
                 }
             }
         }.method(AQuery.METHOD_GET));
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final MakeTree dialog = new MakeTree(MainActivity.this);
-                dialog.show();
-            }
-        });
     }
 }
 
