@@ -107,9 +107,13 @@ router.route('/forest/tag/select').post((req,res)=>{
                         // connection.query('select ')
                     })
                 }
+            return treeArray;
         }
         sync(function(){
-               
+            
+            var result= forfunction.sync();
+            console.log(result); 
+            console.log('fsdf');  
         })
         
             
