@@ -33,7 +33,7 @@ router.route('/register').post((req, res) => {
                     res.sendStatus(204);
                 }
                 console.log(paramid+'추가 성공');
-                res.status(200);
+                res.sendStatus(200);
             });
         }
     });
@@ -62,10 +62,10 @@ router.route('/login').post((req,res)=>{
             }
             if(!result){
                 console.log('아이디나 비밀번호 오류');
-                res.sendStatus('203');
+                res.sendStatus(203);
             }else{
                 console.log(paramid+'login');
-                res.sendStatus('200');
+                res.sendStatus(200);
             }
         });
     });
