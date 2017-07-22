@@ -43,14 +43,14 @@ CREATE TABLE IF NOT EXISTS `post` (
   `tree_idx` int(11) NOT NULL DEFAULT '0',
   `contant` varchar(255) NOT NULL DEFAULT '0',
   PRIMARY KEY (`post_idx`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 -- 테이블 porest.tags 구조 내보내기
 CREATE TABLE IF NOT EXISTS `tags` (
   `hash_idx` int(11) NOT NULL,
   `contant` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 내보낼 데이터가 선택되어 있지 않습니다.
 -- 테이블 porest.tree 구조 내보내기
