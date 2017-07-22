@@ -7,13 +7,14 @@ const connection = require('../mysql.js');
 const util = require('util');
 var url = require('url');
 
-const date = new Date();
+
 
 router.route('/tree').post((req, res) => {
     // 나무 만들기
     let name = req.body.tree_name;
     let id = req.body.id;
     let maximumLeaves = req.body.maximum_leaves;
+    const date = new Date();
     let currentDate = date.toISOString().replace(/T/, ' ').replace(/\..+/, '');
 
     connection.query(`INSERT INTO tree(tree_name,owner, creation_time, maximum_leaves) VALUES('${name}','${id}', '${currentDate}', ${maximumLeaves})`, (err, rows) => {
