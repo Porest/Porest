@@ -5,9 +5,7 @@ const router = express.Router();
 
 const connection = require('../mysql.js');
 const util = require('util');
-var url = require('url');
-
-
+const url = require('url');
 
 router.route('/tree').post((req, res) => {
     // 나무 만들기
@@ -28,23 +26,20 @@ router.route('/tree').post((req, res) => {
     // 나무 리스트
 
     var paramid = url.parse(req.url, true).query.id;
-    console.log(paramid);
     connection.query('select * from tree where owner=?', paramid, (err, result) => {
         if (err) {
-            throw err;
+            console.log(err);
             res.sendStatus(204);
         }
-        console.log(result);
         res.json(result);
-    })
+    });
 }).delete((req, res) => {
     var paramTreeIndex = req.body.tree_idx;
     connection.query('delete from tree where tree_idx=?', paramTreeIndex, (err, result) => {
         if (err) {
-            throw err;
+            console.log(err);
             res.sendStatus(204);
         }
-        console.log(result);
         res.sendStatus(200);
     });
 })

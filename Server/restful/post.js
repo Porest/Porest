@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const connection = require('../mysql.js');
-var url = require('url');
-
+const url = require('url');
 
 router.route('/post').post((req, res) => {
     var contant = req.body.contant;
@@ -15,7 +14,6 @@ router.route('/post').post((req, res) => {
             throw err;
             res.sendStatus(204);
         }
-        console.log('can post');
         res.sendStatus(200);
     });
 }).get((req, res) => {
@@ -28,6 +26,7 @@ router.route('/post').post((req, res) => {
         }
         res.json(result);
         res.status(200);
-    })
-})
+    });
+});
+
 module.exports = router;
