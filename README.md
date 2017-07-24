@@ -9,3 +9,9 @@
 5.	‘숲’에 있는 나무는 다른 사용자들이 볼 수 있고, 좋아요와 싫어요를 남길 수 있다.
 6.	좋아요는 화폐 단위가 되어서 자신의 나무를 더 예쁘게 꾸밀 수 있다.
 7.	‘숲’에 있는 나무는 해시태그 형식으로 검색할 수 있다.
+
+## Technical Stack
+1.	Oven & Photoshop
+2.	Node.js & Express & MySQL
+3.	AWS EC2
+4.	API Level 21(Lollipop)
