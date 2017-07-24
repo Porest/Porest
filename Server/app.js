@@ -4,20 +4,8 @@ const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
-
-var login= require('./restful/login.js');
-var tree= require('./restful/tree.js');
-var forest= require('./restful/forest.js');
-var post= require('./restful/post.js');
-
-app.use('',login);
-app.use('',tree);
-app.use('',forest);
-app.use('',post);
 // const cookieParser = require('cookie-parser');
 // app.use(cookieParser('!..d3##dk!'));
 
@@ -28,7 +16,10 @@ app.use('',post);
 //     saveUninitialized: true
 // }));
 
-app.use('/', require('./restful/tree.js'));
+app.use('', require('./restful/login.js'));
+app.use('', require('./restful/tree.js'));
+app.use('', require('./restful/forest.js'));
+app.use('', require('./restful/post.js'));
 
 app.listen(13958, () => {
     console.log('Server is listening:13958');
