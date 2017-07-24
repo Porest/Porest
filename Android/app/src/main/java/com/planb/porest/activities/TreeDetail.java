@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,7 +18,6 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
-import com.planb.porest.activities.account.Login;
 import com.planb.porest.activities.base.BaseActivity;
 import com.planb.porest.dialogs.MakeLeaf;
 import com.planb.porest.support.networking.Host;
@@ -95,10 +93,6 @@ public class TreeDetail extends BaseActivity {
     }
 
     private void setDatas(int treeIndex) {
-        ArrayList<Leaf> leafList = new ArrayList<>();
-        Leaf leaf = new Leaf(1, "hello");
-
-        leafList.add(leaf);
         aq.ajax(Host.HOST + "/post?tree_idx=" + treeIndex, String.class, new AjaxCallback<String>() {
             @Override
             public void callback(String url, String response, AjaxStatus status) {

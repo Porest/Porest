@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,10 +19,12 @@ import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
 import com.androidquery.callback.AjaxStatus;
 import com.planb.porest.R;
+import com.planb.porest.activities.account.Login;
 import com.planb.porest.activities.base.BaseActivity;
 import com.planb.porest.dialogs.MakeTree;
 import com.planb.porest.support.db.DBHelper;
 import com.planb.porest.support.networking.Host;
+import com.planb.porest.support.view.SnackbarManager;
 import com.planb.porest.support.vo.Tree;
 
 import org.json.JSONArray;
@@ -32,7 +35,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends BaseActivity {
-    private RecyclerView.LayoutManager layoutManager;
+    private ImageButton backBtn;
+
     private RecyclerView recyclerView;
     private ImageView fab;
     private AQuery aq;
@@ -52,6 +56,14 @@ public class MainActivity extends BaseActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         fab = (ImageView) findViewById(R.id.fab);
         aq = new AQuery(getApplicationContext());
+
+        backBtn = (ImageButton) findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Login.class));
+            }
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,6 +206,14 @@ class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     Context context = itemView.getContext();
                     Intent intent = new Intent(context, TreeDetail.class);
                     context.startActivity(intent);
+                }
+            });
+
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    SnackbarManager.make(v, "adsf").show();
+                    return false;
                 }
             });
         }

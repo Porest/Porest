@@ -85,7 +85,7 @@ public class MakeTree extends Dialog {
                     aq.ajax(Host.HOST + "/tree", params, String.class, new AjaxCallback<String>() {
                         @Override
                         public void callback(String url, String object, AjaxStatus status) {
-                            if(status.getCode() == 201) {
+                            if(status.getCode() == 200) {
                                 dismiss();
                             }
                         }
